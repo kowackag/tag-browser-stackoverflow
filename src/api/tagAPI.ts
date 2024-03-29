@@ -6,6 +6,7 @@ const baseUrl = "https://api.stackexchange.com/2.3/tags?";
 
 export const getTags = async (params: TagsUrlParams) => {
   const extendedUrl = createUrl(params);
+
   const res = await fetch(`${baseUrl}${extendedUrl}`, {});
 
   if (res.ok) {
