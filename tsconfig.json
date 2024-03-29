@@ -33,7 +33,11 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "tailwind.config.ts"
+    "tailwind.config.ts",
+    "../SortSelect.tsx",
+    "../PaginationOutlined.tsx",
+    "../TagsOnPageInput.tsx",
+    "../tag-browser-stackoverflow/src/ui/atoms/Title.tsx"
   ],
   "exclude": ["node_modules"]
 }
