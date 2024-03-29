@@ -8,12 +8,12 @@ export const SortSelect = () => {
   return (
     <Box sx={{ mx: 2, minWidth: 220 }}>
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Sort</InputLabel>
+        <InputLabel id="sorted">Sort</InputLabel>
         <Select
           labelId="demo-simple-select-label"
-          id="demo-simple-select"
+          id="sorted"
           //   value={age}
-          label="Age"
+          label="sort"
           //   onChange={handleChange}
         >
           <MenuItem value={10}>Popular</MenuItem>

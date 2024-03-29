@@ -29,6 +29,7 @@ export default async function TagsPage({
     return notFound();
   }
 
+  console.log(666, queryParams);
 
   return (
     <Box component="section" sx={{ p: 2 }}>
@@ -47,10 +48,10 @@ export default async function TagsPage({
           autoComplete="off"
         >
           <SortSelect />
-          <TagsOnPageInput />
+          <TagsOnPageInput tagsOnPageQuantity={queryParams.pagesize} />
         </Box>
         <TableTags tags={data.items} />
-        <PaginationOutlined count={data.quota_max/queryParams.pagesize} />
+        <PaginationOutlined count={data.quota_max / queryParams.pagesize} />
       </div>
     </Box>
   );

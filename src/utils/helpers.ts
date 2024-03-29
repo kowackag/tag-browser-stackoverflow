@@ -4,8 +4,8 @@ export const createQueryParams = (searchParams: TagsUrlParams) => {
   const queryParams = {
     order: searchParams.order?.toString() ?? "",
     sort: searchParams.sort?.toString() ?? "",
-    page: Number(searchParams.page) ?? "",
-    pagesize: Number(searchParams.pagesize),
+    page: searchParams.page ? Number(searchParams.page) : 1,
+    pagesize: searchParams.pagesize ? Number(searchParams.pagesize) : 10,
   };
   return queryParams;
 };
