@@ -13,6 +13,7 @@ export const TagsOnPageInput = ({
 }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
+  // const pathname = usePathname();
 
   const [optimisticTagsOnPageQuantity, setOptimisticTagsOnPageQuantity] =
     useOptimistic(tagsOnPageQuantity);
@@ -24,7 +25,9 @@ export const TagsOnPageInput = ({
     startTransition(() => {
       setOptimisticTagsOnPageQuantity(Number(e.target.value));
     });
-
+    // router.replace(
+    //   `${pathname}?${changeUrlParams("pagesize", e.target.value)}`
+    // );
     router.push(`/tags?${changeUrlParams("pagesize", e.target.value)}`);
   };
 

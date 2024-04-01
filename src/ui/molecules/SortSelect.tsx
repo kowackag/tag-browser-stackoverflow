@@ -1,10 +1,27 @@
-import { Box } from "@mui/material";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
+"use client";
+import { useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+
+import { Box, InputLabel, MenuItem, FormControl } from "@mui/material";
+import Select, { type SelectChangeEvent } from "@mui/material/Select";
+
+import { useSetParams } from "@/utils/useSetParams";
 
 export const SortSelect = () => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const [sorted, setSorted] = useState(searchParams.get("sorted") ?? "popular");
+
+  const changeUrlParams = useSetParams(searchParams);
+
+  const handleChange = async (e: SelectChangeEvent<string>) => {
+    e.preventDefault();
+
+    const sortBy: string = e.target.value;
+    setSorted(sortBy);
+    router.push(`/tags?${changeUrlParams("sort", sortBy)}`);
+  };
   return (
     <Box sx={{ mx: 2, minWidth: 220 }}>
       <FormControl fullWidth>
@@ -12,13 +29,13 @@ export const SortSelect = () => {
         <Select
           labelId="demo-simple-select-label"
           id="sorted"
-          //   value={age}
+          value={sorted}
           label="sort"
-          //   onChange={handleChange}
+          onChange={handleChange}
         >
-          <MenuItem value={10}>Popular</MenuItem>
-          <MenuItem value={20}>Activity</MenuItem>
-          <MenuItem value={30}>Name</MenuItem>
+          <MenuItem value="popular">Popular</MenuItem>
+          <MenuItem value="activity">Activity</MenuItem>
+          <MenuItem value="name">Name</MenuItem>
         </Select>
       </FormControl>
     </Box>
