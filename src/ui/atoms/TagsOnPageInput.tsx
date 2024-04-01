@@ -1,14 +1,10 @@
 "use client";
 
-import {
-  ChangeEvent,
-  startTransition,
-  useCallback,
-  useOptimistic,
-} from "react";
+import { ChangeEvent, startTransition, useOptimistic } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import { TextField } from "@mui/material";
+import { useSetParams } from "@/utils/useSetParams";
 
 export const TagsOnPageInput = ({
   tagsOnPageQuantity,
@@ -18,24 +14,18 @@ export const TagsOnPageInput = ({
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const [optimisticQuantity, setOptimisticQuantity] =
+  const [optimisticTagsOnPageQuantity, setOptimisticTagsOnPageQuantity] =
     useOptimistic(tagsOnPageQuantity);
 
-  const createQueryString = useCallback(
-    (name: string, value: string) => {
-      const params = new URLSearchParams(searchParams.toString());
-      params.set(name, value);
-      return params.toString();
-    },
-    [searchParams]
-  );
+  const changeUrlParams = useSetParams(searchParams);
 
-  const handleChange = async (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
     startTransition(() => {
-      setOptimisticQuantity(Number(e.target.value));
+      setOptimisticTagsOnPageQuantity(Number(e.target.value));
     });
 
-    router.push(`/tags?${createQueryString("pagesize", e.target.value)}`);
+    router.push(`/tags?${changeUrlParams("pagesize", e.target.value)}`);
   };
 
   return (
@@ -46,8 +36,8 @@ export const TagsOnPageInput = ({
       type="number"
       InputProps={{
         onChange: (e: ChangeEvent<HTMLInputElement>) => handleChange(e),
-        value: optimisticQuantity,
-        inputProps: { min: 5, max: 50 },
+        value: optimisticTagsOnPageQuantity,
+        inputProps: { max: 50 },
       }}
       sx={{ maxWidth: 120 }}
     />
