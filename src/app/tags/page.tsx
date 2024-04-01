@@ -1,11 +1,13 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Box, Typography } from "@mui/material";
+import { Suspense } from "react";
 
-import { TableTags } from "@/ui/organisms/TagTable";
-import { PaginationOutlined } from "@/ui/molecules/PaginationOutlined";
-import { SortSelect } from "@/ui/molecules/SortSelect";
-import { TagsOnPageInput } from "@/ui/atoms/TagsOnPageInput";
+// import { Box, Typography } from "@mui/material";
+// import { TableTags } from "@/ui/organisms/TagTable";
+// import { PaginationOutlined } from "@/ui/molecules/PaginationOutlined";
+// import { SortSelect } from "@/ui/molecules/SortSelect";
+// import { TagsOnPageInput } from "@/ui/atoms/TagsOnPageInput";
+import Loading from "./loading";
 
 import { getTags } from "@/api/tagAPI";
 import { TagsUrlParams } from "@/utils/types";
@@ -17,11 +19,11 @@ export const metadata: Metadata = {
     "Tag browser provided by the Stack Overflow API  - recruitment task to Mediporta Sp. z o.o.",
 };
 
-export default async function TagsPage({
-  searchParams,
-}: {
-  searchParams: TagsUrlParams;
-}) {
+type TagsPageParams = {
+  readonly searchParams: TagsUrlParams;
+};
+
+export default async function TagsPage({ searchParams }: TagsPageParams) {
   const queryParams = createQueryParams(searchParams);
   const data = await getTags(queryParams);
 
@@ -29,11 +31,13 @@ export default async function TagsPage({
     return notFound();
   }
 
-  console.log(666, queryParams);
+  const lastPageNumber = Math.ceil(data.quota_max / queryParams.pagesize);
 
   return (
-    <Box component="section" sx={{ p: 2 }}>
-      <Typography variant="h4" component="h1" sx={{ my: 2 }}>
+    <div >
+
+      dddd
+      {/* <Typography variant="h4" component="h1" sx={{ my: 2 }}>
         Stack Overflow API - Tag browser
       </Typography>
       <div>
@@ -50,9 +54,11 @@ export default async function TagsPage({
           <SortSelect />
           <TagsOnPageInput tagsOnPageQuantity={queryParams.pagesize} />
         </Box>
-        <TableTags tags={data.items} />
-        <PaginationOutlined count={data.quota_max / queryParams.pagesize} />
-      </div>
-    </Box>
+        <Suspense fallback={<Loading />}>
+          <TableTags tags={data.items} />
+        </Suspense>
+        <PaginationOutlined count={lastPageNumber} /> */}
+      {/* </div> */}
+    </div>
   );
 }

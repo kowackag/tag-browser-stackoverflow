@@ -1,21 +1,26 @@
-import { Box } from "@mui/material";
 import Link from "next/link";
+
+// import { Box } from "@mui/material";
+
 import { Paths } from "@/utils/paths";
 
 export const NavBar = () => {
   return (
-    <Box
-      component="header"
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
+    <nav
+    // component="nav"
+    // sx={{
+    //   display: "flex",
+    //   justifyContent: "center",
+    //   alignItems: "center",
+    // }}
     >
-      <Link href={Paths.HOME}> Solution </Link>
+      <Link href={Paths.HOME} className="underline py-8">
+        {" "}
+        Solution{" "}
+      </Link>
       <Link href={Paths.TAGS}> Tag Browser </Link>
       <Link href={Paths.FEEDBACK}> Feedback </Link>
       <Link href={Paths.ABOUT}> About me </Link>
-    </Box>
+    </nav>
   );
 };
