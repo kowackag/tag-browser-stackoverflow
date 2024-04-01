@@ -5,13 +5,14 @@ import { Suspense } from "react";
 // import { Box, Typography } from "@mui/material";
 // import { TableTags } from "@/ui/organisms/TagTable";
 // import { PaginationOutlined } from "@/ui/molecules/PaginationOutlined";
-// import { SortSelect } from "@/ui/molecules/SortSelect";
+import { SortSelect } from "@/ui/molecules/SortSelect";
 // import { TagsOnPageInput } from "@/ui/atoms/TagsOnPageInput";
 import Loading from "./loading";
 
 import { getTags } from "@/api/tagAPI";
 import { TagsUrlParams } from "@/utils/types";
 import { createQueryParams } from "@/utils/helpers";
+import { Title } from "@/ui/atoms/Title";
 
 export const metadata: Metadata = {
   title: "Stack Overflow API - tag browser",
@@ -35,30 +36,18 @@ export default async function TagsPage({ searchParams }: TagsPageParams) {
 
   return (
     <div >
-
-      dddd
-      {/* <Typography variant="h4" component="h1" sx={{ my: 2 }}>
-        Stack Overflow API - Tag browser
-      </Typography>
-      <div>
-        <Box
-          component="form"
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            "& .MuiTextField-root": { my: 4, width: "25ch" },
-          }}
-          autoComplete="off"
+      <Title>Stack Overflow API - Tag browser </Title>
+      {<div>
+        <form className="flex items-center justify-center"
         >
           <SortSelect />
-          <TagsOnPageInput tagsOnPageQuantity={queryParams.pagesize} />
-        </Box>
+          {/* <TagsOnPageInput tagsOnPageQuantity={queryParams.pagesize} /> */}
+        </form>
         <Suspense fallback={<Loading />}>
-          <TableTags tags={data.items} />
+          {/* <TableTags tags={data.items} /> */}
         </Suspense>
-        <PaginationOutlined count={lastPageNumber} /> */}
-      {/* </div> */}
-    </div>
+        {/* <PaginationOutlined count={lastPageNumber} />  */}
+    </div>}
+     </div>
   );
 }
