@@ -1,51 +1,26 @@
-// import * as React from "react";
+import { TagsResponseItem } from "@/api/types";
 
-// import {
-//   TableHead,
-//   Typography,
-//   Table,
-//   TableBody,
-//   TableCell,
-//   TableRow,
-//   TableContainer,
-//   Paper,
-// } from "@mui/material";
-
-// import { TagsResponseItem } from "@/api/types";
-
-// export const TableTags = ({ tags }: { tags: TagsResponseItem[] }) => {
-//   return (
-//     <TableContainer sx={{ maxWidth: 1000, m: "auto" }} component={Paper}>
-//       <Table size="small" aria-label="tags table">
-//         <TableHead>
-//           <TableRow>
-//             <TableCell sx={{ py: 2 }} align="left">
-//               Tag name
-//             </TableCell>
-//             <TableCell align="right">Count</TableCell>
-//           </TableRow>
-//         </TableHead>
-//         <TableBody>
-//           {tags.length ? (
-//             tags.map((tag) => (
-//               <TableRow
-//                 key={tag.name}
-//                 sx={{
-//                   py: 3,
-//                   "&:last-child td, &:last-child th": { border: 0 },
-//                 }}
-//               >
-//                 <TableCell sx={{ py: 2 }} component="th" scope="row">
-//                   {tag.name}
-//                 </TableCell>
-//                 <TableCell align="right">{tag.count}</TableCell>
-//               </TableRow>
-//             ))
-//           ) : (
-//             <Typography variant="subtitle1">There is no tags</Typography>
-//           )}
-//         </TableBody>
-//       </Table>
-//     </TableContainer>
-//   );
-// };
+export const TableTags = ({ tags }: { tags: TagsResponseItem[] }) => {
+	return (
+		<div className="mt-12 overflow-x-auto rounded-md border shadow-sm">
+			<table className="w-full  text-sm">
+				<thead className="border-b bg-gray-50 font-medium text-zinc-600">
+					<tr>
+						<th className="px-6 py-3 text-left">Tag</th>
+						<th className="px-6 py-3 text-right">Count</th>
+					</tr>
+				</thead>
+				<tbody className="divide-y text-zinc-600">
+					{tags.map((tag, idx) => (
+						<tr key={`${tag.name}-${idx}`}>
+							<td className="whitespace-nowrap px-6 py-4">{tag.name}</td>
+							<td className="whitespace-nowrap px-6 py-4 text-right">
+								{tag.count}
+							</td>
+						</tr>
+					))}
+				</tbody>
+			</table>
+		</div>
+	);
+};
