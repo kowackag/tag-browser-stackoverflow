@@ -1,6 +1,6 @@
 "use client";
 
-import { ChangeEvent, startTransition, useOptimistic } from "react";
+import { type ChangeEvent, startTransition, useOptimistic } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import { useSetParams } from "@/utils/useSetParams";

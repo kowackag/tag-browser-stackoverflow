@@ -1,4 +1,4 @@
-import { TagsUrlParams } from "./types";
+import { type TagsUrlParams } from "./types";
 
 export const createQueryParams = (searchParams: TagsUrlParams) => {
 	const queryParams = {

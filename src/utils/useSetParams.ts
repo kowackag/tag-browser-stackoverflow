@@ -1,4 +1,4 @@
-import { ReadonlyURLSearchParams } from "next/navigation";
+import { type ReadonlyURLSearchParams } from "next/navigation";
 import { useCallback } from "react";
 
 export const useSetParams = (searchParams: ReadonlyURLSearchParams) => {

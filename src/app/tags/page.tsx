@@ -1,16 +1,16 @@
-import { Metadata } from "next";
+import { type Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
 // import { Box, Typography } from "@mui/material";
+import Loading from "./loading";
 import { TableTags } from "@/ui/organisms/TagTable";
 import { Pagination } from "@/ui/molecules/Pagination";
 import { SortSelect } from "@/ui/molecules/SortSelect";
 import { TagsOnPageInput } from "@/ui/atoms/TagsOnPageInput";
-import Loading from "./loading";
 
 import { getTags } from "@/api/tagAPI";
-import { TagsUrlParams } from "@/utils/types";
+import { type TagsUrlParams } from "@/utils/types";
 import { createQueryParams } from "@/utils/helpers";
 import { Title } from "@/ui/atoms/Title";
 import { SectionContainer } from "@/ui/atoms/SectionContainer";
@@ -41,18 +41,19 @@ export default async function TagsPage({ searchParams }: TagsPageParams) {
 			<Title>Stack Overflow API - Tag browser </Title>
 			{
 				<div>
+					
 					<div className="flex items-end justify-between">
 						<p>Searchfield</p>
-						<form className="items-end justify-center md:flex">
+						<form className="md:flex items-end justify-center">
 							<TagsOnPageInput tagsOnPageQuantity={queryParams.pagesize} />
 
 							<SortSelect />
 							<OrderRadio />
 						</form>
 					</div>
-
-					<TableTags tags={data.items} />
-
+					<Suspense fallback={<Loading />}>
+						<TableTags tags={data.items} />
+					</Suspense>
 					<Pagination pageQuantity={lastPageNumber} />
 				</div>
 			}

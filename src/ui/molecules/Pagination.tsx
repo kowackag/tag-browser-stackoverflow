@@ -1,4 +1,4 @@
-import { useSearchParams } from "next/navigation";
+// import { useSearchParams } from "next/navigation";
 import { PageNumberField } from "../atoms/PageNumberField";
 
 export const Pagination = ({ pageQuantity }: { pageQuantity: number }) => {

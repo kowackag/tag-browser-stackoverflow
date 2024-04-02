@@ -1,6 +1,6 @@
-import { Paths } from "@/utils/paths";
-import { Route } from "next";
+import { type Route } from "next";
 import { ActiveLink } from "../atoms/ActiveLink";
+import { Paths } from "@/utils/paths";
 
 export const NavBar = () => {
 	const navigationLinks = [

@@ -1,4 +1,4 @@
-import { TagsUrlParams } from "@/utils/types";
+import { type TagsUrlParams } from "@/utils/types";
 
 export const createUrl = ({ order, sort, page, pagesize }: TagsUrlParams) => {
   const orderType = order ? `&order=${order}` : "&order=desc";

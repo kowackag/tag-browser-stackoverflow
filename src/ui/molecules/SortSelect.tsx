@@ -1,6 +1,6 @@
 "use client";
 
-import { ChangeEvent, useState, useTransition } from "react";
+import { type ChangeEvent, useState, useTransition } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 // import { Box, InputLabel, MenuItem, FormControl } from "@mui/material";

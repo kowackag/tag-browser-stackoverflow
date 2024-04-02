@@ -2,8 +2,8 @@
 
 import { useFormState } from "react-dom";
 
-import { StarsRadioField } from "@/ui/atoms/StarsRadioField";
 import { sendFeedback } from "./actions";
+import { StarsRadioField } from "@/ui/atoms/StarsRadioField";
 import { SendFeedbackButton } from "@/ui/atoms/SendFeedbackButton";
 
 export const SendFeedbackForm = () => {

@@ -1,4 +1,4 @@
-import { TagsResponseItem } from "@/api/types";
+import { type TagsResponseItem } from "@/api/types";
 
 export const TableTags = ({ tags }: { tags: TagsResponseItem[] }) => {
  
