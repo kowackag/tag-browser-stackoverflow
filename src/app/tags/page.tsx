@@ -14,6 +14,7 @@ import { TagsUrlParams } from "@/utils/types";
 import { createQueryParams } from "@/utils/helpers";
 import { Title } from "@/ui/atoms/Title";
 import { SectionContainer } from "@/ui/atoms/SectionContainer";
+import { OrderRadio } from "@/ui/atoms/OrderRadio";
 
 export const metadata: Metadata = {
 	title: "Stack Overflow API - tag browser",
@@ -33,21 +34,27 @@ export default async function TagsPage({ searchParams }: TagsPageParams) {
 		return notFound();
 	}
 
-	// const lastPageNumber = Math.ceil(data.quota_max / queryParams.pagesize);
+	const lastPageNumber = Math.ceil(data.quota_max / queryParams.pagesize);
 
 	return (
 		<SectionContainer>
 			<Title>Stack Overflow API - Tag browser </Title>
 			{
 				<div>
-					<form className="flex items-center justify-center">
-						<SortSelect />
-						<TagsOnPageInput tagsOnPageQuantity={queryParams.pagesize} />
-					</form>
+					
+					<div className="flex items-end justify-between">
+						<p>Searchfield</p>
+						<form className="md:flex items-end justify-center">
+							<TagsOnPageInput tagsOnPageQuantity={queryParams.pagesize} />
+
+							<SortSelect />
+							<OrderRadio />
+						</form>
+					</div>
 					<Suspense fallback={<Loading />}>
 						<TableTags tags={data.items} />
 					</Suspense>
-					<Pagination pageQuantity={10} />
+					<Pagination pageQuantity={lastPageNumber} />
 				</div>
 			}
 		</SectionContainer>
