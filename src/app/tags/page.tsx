@@ -4,9 +4,9 @@ import { Suspense } from "react";
 
 // import { Box, Typography } from "@mui/material";
 import { TableTags } from "@/ui/organisms/TagTable";
-// import { PaginationOutlined } from "@/ui/molecules/PaginationOutlined";
+import { Pagination } from "@/ui/molecules/Pagination";
 import { SortSelect } from "@/ui/molecules/SortSelect";
-// import { TagsOnPageInput } from "@/ui/atoms/TagsOnPageInput";
+import { TagsOnPageInput } from "@/ui/atoms/TagsOnPageInput";
 import Loading from "./loading";
 
 import { getTags } from "@/api/tagAPI";
@@ -33,7 +33,7 @@ export default async function TagsPage({ searchParams }: TagsPageParams) {
 		return notFound();
 	}
 
-	const lastPageNumber = Math.ceil(data.quota_max / queryParams.pagesize);
+	// const lastPageNumber = Math.ceil(data.quota_max / queryParams.pagesize);
 
 	return (
 		<SectionContainer>
@@ -42,12 +42,12 @@ export default async function TagsPage({ searchParams }: TagsPageParams) {
 				<div>
 					<form className="flex items-center justify-center">
 						<SortSelect />
-						{/* <TagsOnPageInput tagsOnPageQuantity={queryParams.pagesize} /> */}
+						<TagsOnPageInput tagsOnPageQuantity={queryParams.pagesize} />
 					</form>
 					<Suspense fallback={<Loading />}>
 						<TableTags tags={data.items} />
 					</Suspense>
-					{/* <PaginationOutlined count={lastPageNumber} />  */}
+					<Pagination pageQuantity={10} />
 				</div>
 			}
 		</SectionContainer>

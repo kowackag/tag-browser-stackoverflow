@@ -1,6 +1,7 @@
 import { TagsResponseItem } from "@/api/types";
 
 export const TableTags = ({ tags }: { tags: TagsResponseItem[] }) => {
+ 
 	return (
 		<div className="mt-12 overflow-x-auto rounded-md border shadow-sm">
 			<table className="w-full  text-sm">
@@ -11,14 +12,20 @@ export const TableTags = ({ tags }: { tags: TagsResponseItem[] }) => {
 					</tr>
 				</thead>
 				<tbody className="divide-y text-zinc-600">
-					{tags.map((tag, idx) => (
-						<tr key={`${tag.name}-${idx}`}>
-							<td className="whitespace-nowrap px-6 py-4">{tag.name}</td>
-							<td className="whitespace-nowrap px-6 py-4 text-right">
-								{tag.count}
-							</td>
+					{tags.length ? (
+						tags.map((tag, idx) => (
+							<tr key={`${tag.name}-${idx}`}>
+								<td className="whitespace-nowrap px-6 py-4">{tag.name}</td>
+								<td className="whitespace-nowrap px-6 py-4 text-right">
+									{tag.count}
+								</td>
+							</tr>
+						))
+					) : (
+						<tr>
+							<td className="whitespace-nowrap px-6 py-4">No tags was found</td>
 						</tr>
-					))}
+					)}
 				</tbody>
 			</table>
 		</div>
