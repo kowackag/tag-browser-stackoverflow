@@ -34,7 +34,7 @@ export default async function TagsPage({ searchParams }: TagsPageParams) {
 		return notFound();
 	}
 
-	const lastPageNumber = Math.ceil(data.quota_max / queryParams.pagesize);
+	const lastPageNumber = Math.ceil(data.quota_max / queryParams.pagesize) ?? 1;
 
 	return (
 		<SectionContainer>

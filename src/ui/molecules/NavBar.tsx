@@ -11,7 +11,7 @@ export const NavBar = () => {
 	];
 
 	return (
-		<nav className="hidden md:flex md:justify-center">
+		<nav className="flex md:justify-center">
 			<ul className="flex items-center justify-center">
 				{navigationLinks.map((link) => (
 					<li className="px-2" key={link.href}>
