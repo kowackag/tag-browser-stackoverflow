@@ -4,6 +4,7 @@ import { SendFeedbackForm } from "@/ui/molecules/SendFeedbackForm/SendFeedbackFo
 export default async function FeedbackPage() {
 	return (
 		<SectionContainer>
+            <p>Thank you for visit my page. I would be very gratefull if you could give me any feedback to </p>
 			<SendFeedbackForm />
 		</SectionContainer>
 	);

@@ -2,6 +2,7 @@
 
 import { Resend } from "resend";
 import { feedbackSchema } from "./feedbackSchema";
+import { revalidateTag } from "next/cache";
 
 export type AddCommentActionTypes<TData = unknown> =
 	| {
@@ -25,6 +26,7 @@ export const sendFeedback = async (data: FormData) => {
 	const parsedData = await feedbackSchema.safeParseAsync(
 		Object.fromEntries(data),
 	);
+
 	if (parsedData.success) {
 		const data = {
 			rating: Number(parsedData.data.rating),
@@ -38,7 +40,7 @@ export const sendFeedback = async (data: FormData) => {
 			subject: "Recruitment task - Feedback",
 			html: `<p>Rating: ${data.rating} </p><p>Comment: ${data.content}</p><p>Comment: ${data.name}</p>`,
 		});
-
+		revalidateTag("feedback");
 		return {
 			success: true,
 			errors: false,

@@ -41,19 +41,18 @@ export default async function TagsPage({ searchParams }: TagsPageParams) {
 			<Title>Stack Overflow API - Tag browser </Title>
 			{
 				<div>
-					
 					<div className="flex items-end justify-between">
 						<p>Searchfield</p>
-						<form className="md:flex items-end justify-center">
+						<form className="items-end justify-center md:flex">
 							<TagsOnPageInput tagsOnPageQuantity={queryParams.pagesize} />
 
 							<SortSelect />
 							<OrderRadio />
 						</form>
 					</div>
-					<Suspense fallback={<Loading />}>
-						<TableTags tags={data.items} />
-					</Suspense>
+
+					<TableTags tags={data.items} />
+
 					<Pagination pageQuantity={lastPageNumber} />
 				</div>
 			}

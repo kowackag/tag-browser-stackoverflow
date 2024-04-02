@@ -1,13 +1,15 @@
-// import { Typography } from "@mui/material";
-// import Container from "@mui/material/Container";
+import { SectionContainer } from "@/ui/atoms/SectionContainer";
+import { Title } from "@/ui/atoms/Title";
 
 export default async function Home() {
-  return (
-    <div>dddddddddddddddd</div>
-    // <Container maxWidth="lg">
-    //   <Typography variant="h4" component="h1" sx={{ my: 2 }}>
-    //     Recruitment Task
-    //   </Typography>
-    // </Container>
-  );
+	return (
+		<SectionContainer>
+			<Title>Introduction</Title>
+			<p>
+				First of all I would like to thank you for your response and the
+				opportunity to participate in the recruitment process for the Junior
+				Frontend Developer possition.
+			</p>
+		</SectionContainer>
+	);
 }
