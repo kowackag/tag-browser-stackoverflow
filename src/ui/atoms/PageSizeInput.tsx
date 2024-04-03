@@ -1,32 +1,34 @@
 "use client";
 
-import { type ChangeEvent, startTransition, useOptimistic } from "react";
+import { type ChangeEvent, useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import { useSetParams } from "@/utils/useSetParams";
+import { useDebounce } from "@/utils/useDebounce";
 
-export const PageSizeInput = ({
-	pageSize,
-}: {
-	pageSize: number;
-}) => {
+export const PageSizeInput = () => {
 	const router = useRouter();
 	const searchParams = useSearchParams();
+	const pageSizeParam = Number(searchParams.get("pagesize")) || 30;
 
-	const [optimisticPageSize, setOptimisticPageSize] =
-		useOptimistic(pageSize);
+	const [pageSize, setPageSize] = useState(pageSizeParam);
 
+	const debouncedPhrase = useDebounce<number>(pageSize, 600);
 	const changeUrlParams = useSetParams(searchParams);
 
-	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-		e.preventDefault();
-		if (Number(e.target.value) > 0 && Number(e.target.value) < 101 ) {
-		startTransition(() => {
-			setOptimisticPageSize(Number(e.target.value));
-		});
-		router.push(`/tags?${changeUrlParams("pagesize", e.target.value)}`);
-		}
+	useEffect(() => {
+		if (!debouncedPhrase) return;
 
+		router.push(
+			`/tags?${changeUrlParams("pagesize", debouncedPhrase.toString())}`,
+		);
+	}, [debouncedPhrase, router]);
+
+	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+		if (Number(e.target.value) > 0 || Number(e.target.value) <= 100) {
+			e.preventDefault();
+			setPageSize(Number(e.target.value));
+		}
 	};
 
 	return (
@@ -42,9 +44,9 @@ export const PageSizeInput = ({
 				className="w-full rounded-md border bg-transparent py-2 pl-3 pr-3 text-zinc-600 shadow-sm outline-none focus:border-sky-600"
 				type="number"
 				onChange={handleChange}
-				value={optimisticPageSize}
-				min={1}
+				value={pageSize}
 				max={100}
+				min={1}
 			/>
 		</div>
 	);

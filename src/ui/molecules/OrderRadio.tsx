@@ -1,17 +1,15 @@
-import { OrderRadioField } from "./OrderRadioField";
+import { OrderRadioField } from "../atoms/OrderRadioField";
 
 export const OrderRadio = () => {
-    const orderList = [
-       {name: "ascending", param: 'asc' },
-       {name: "descending", param: 'desc' }
-    ]
+	const orderList = [
+		{ name: "descending", param: "desc" },
+		{ name: "ascending", param: "asc" },
+	];
 
 	return (
-		<div
-			className="w-36 px-3 py-2"
-		>
+		<div className="w-36 px-3 py-2">
 			<fieldset>
-				<ul >
+				<ul>
 					{orderList.map((order) => (
 						<li key={order.param} className="text-zinc-600">
 							<OrderRadioField orderData={order} />

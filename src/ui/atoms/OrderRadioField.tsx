@@ -43,7 +43,7 @@ export const OrderRadioField = ({
 				type="radio"
 				checked={optimisticOrder === orderData.param}
 				name="pagination"
-				className="peer pt-2"
+				className="peer pt-2 sr sr-only"
 				onChange={handleChange}
 				value={orderData.param}
 			/>
