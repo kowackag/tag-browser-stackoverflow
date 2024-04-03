@@ -1,20 +1,19 @@
+import { Suspense } from "react";
 import { type Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Suspense } from "react";
 
-// import { Box, Typography } from "@mui/material";
-import Loading from "./loading";
 import { TableTags } from "@/ui/organisms/TagTable";
 import { Pagination } from "@/ui/molecules/Pagination";
 import { SortSelect } from "@/ui/molecules/SortSelect";
-import { TagsOnPageInput } from "@/ui/atoms/TagsOnPageInput";
+import { PageSizeInput } from "@/ui/atoms/PageSizeInput";
+import { Title } from "@/ui/atoms/Title";
+import { SectionContainer } from "@/ui/atoms/SectionContainer";
+import { OrderRadio } from "@/ui/atoms/OrderRadio";
+import Loading from "./loading";
 
 import { getTags } from "@/api/tagAPI";
 import { type TagsUrlParams } from "@/utils/types";
 import { createQueryParams } from "@/utils/helpers";
-import { Title } from "@/ui/atoms/Title";
-import { SectionContainer } from "@/ui/atoms/SectionContainer";
-import { OrderRadio } from "@/ui/atoms/OrderRadio";
 
 export const metadata: Metadata = {
 	title: "Stack Overflow API - tag browser",
@@ -39,13 +38,11 @@ export default async function TagsPage({ searchParams }: TagsPageParams) {
 	return (
 		<SectionContainer>
 			<Title>Stack Overflow API - Tag browser </Title>
-			{
 				<div>
-					
 					<div className="flex items-end justify-between">
 						<p>Searchfield</p>
 						<form className="md:flex items-end justify-center">
-							<TagsOnPageInput tagsOnPageQuantity={queryParams.pagesize} />
+							<PageSizeInput pageSize={queryParams.pagesize ? queryParams.pagesize : 30} />
 
 							<SortSelect />
 							<OrderRadio />
@@ -56,7 +53,6 @@ export default async function TagsPage({ searchParams }: TagsPageParams) {
 					</Suspense>
 					<Pagination pageQuantity={lastPageNumber} />
 				</div>
-			}
 		</SectionContainer>
 	);
 }

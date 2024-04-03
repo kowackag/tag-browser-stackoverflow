@@ -5,25 +5,28 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 import { useSetParams } from "@/utils/useSetParams";
 
-export const TagsOnPageInput = ({
-	tagsOnPageQuantity,
+export const PageSizeInput = ({
+	pageSize,
 }: {
-	tagsOnPageQuantity: number;
+	pageSize: number;
 }) => {
 	const router = useRouter();
 	const searchParams = useSearchParams();
 
-	const [optimisticTagsOnPageQuantity, setOptimisticTagsOnPageQuantity] =
-		useOptimistic(tagsOnPageQuantity);
+	const [optimisticPageSize, setOptimisticPageSize] =
+		useOptimistic(pageSize);
 
 	const changeUrlParams = useSetParams(searchParams);
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 		e.preventDefault();
+		if (Number(e.target.value) > 0 && Number(e.target.value) < 101 ) {
 		startTransition(() => {
-			setOptimisticTagsOnPageQuantity(Number(e.target.value));
+			setOptimisticPageSize(Number(e.target.value));
 		});
 		router.push(`/tags?${changeUrlParams("pagesize", e.target.value)}`);
+		}
+
 	};
 
 	return (
@@ -39,7 +42,7 @@ export const TagsOnPageInput = ({
 				className="w-full rounded-md border bg-transparent py-2 pl-3 pr-3 text-zinc-600 shadow-sm outline-none focus:border-sky-600"
 				type="number"
 				onChange={handleChange}
-				value={optimisticTagsOnPageQuantity}
+				value={optimisticPageSize}
 				min={1}
 				max={100}
 			/>
