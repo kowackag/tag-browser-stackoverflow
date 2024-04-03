@@ -7,7 +7,6 @@ export const NavBar = () => {
 		{ name: "Solution", href: Paths.HOME, exact: true },
 		{ name: "Tag Browser", href: Paths.TAGS, exact: false },
 		{ name: "Feedback", href: Paths.FEEDBACK, exact: false },
-		// { name: "Tag Browser", href: Paths.TAGS, exact: false },
 	];
 
 	return (

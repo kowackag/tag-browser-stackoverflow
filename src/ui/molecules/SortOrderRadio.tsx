@@ -1,15 +1,15 @@
 import { OrderRadioField } from "../atoms/OrderRadioField";
 
-export const OrderRadio = () => {
+export const SortOrderRadio = () => {
 	const orderList = [
-		{ name: "descending", param: "desc" },
-		{ name: "ascending", param: "asc" },
+		{ href: "/icons.svg#arrow-down", param: "desc" },
+		{ href: "/icons.svg#arrow-up", param: "asc" },
 	];
 
 	return (
-		<div className="w-36 px-3 py-2">
+		<div className="px-2 pt-2">
 			<fieldset>
-				<ul>
+				<ul className="flex">
 					{orderList.map((order) => (
 						<li key={order.param} className="text-zinc-600">
 							<OrderRadioField orderData={order} />

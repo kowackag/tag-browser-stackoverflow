@@ -18,11 +18,10 @@ export const PageSizeInput = () => {
 
 	useEffect(() => {
 		if (!debouncedPhrase) return;
-
 		router.push(
 			`/tags?${changeUrlParams("pagesize", debouncedPhrase.toString())}`,
 		);
-	}, [debouncedPhrase, router]);
+	}, [debouncedPhrase, router, changeUrlParams]);
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 		if (Number(e.target.value) > 0 || Number(e.target.value) <= 100) {
@@ -32,16 +31,16 @@ export const PageSizeInput = () => {
 	};
 
 	return (
-		<div className="relative w-36 px-3 py-2">
+		<div className="w-30 relative px-3 pt-2">
 			<label
 				htmlFor="page-size"
 				className="absolute top-0 m-auto mx-3 bg-white px-1 text-xs"
 			>
-				Tags on page
+				Page size
 			</label>
 			<input
 				id="page-size"
-				className="w-full rounded-md border bg-transparent py-2 pl-3 pr-3 text-zinc-600 shadow-sm outline-none focus:border-sky-600"
+				className="h-11 w-full rounded-md border bg-transparent pl-3 pr-3 text-zinc-600 shadow-sm outline-none focus:border-sky-600"
 				type="number"
 				onChange={handleChange}
 				value={pageSize}

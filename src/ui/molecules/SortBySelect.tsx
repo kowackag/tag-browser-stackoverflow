@@ -1,15 +1,11 @@
 "use client";
 
-import { type ChangeEvent, useState, useTransition } from "react";
+import { type ChangeEvent, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-
-// import { Box, InputLabel, MenuItem, FormControl } from "@mui/material";
-// import Select, { type SelectChangeEvent } from "@mui/material/Select";
 
 import { useSetParams } from "@/utils/useSetParams";
 
-export const SortSelect = () => {
-	const [isPending, startTransition] = useTransition();
+export const SortBySelect = () => {
 	const router = useRouter();
 	const searchParams = useSearchParams();
 
@@ -19,24 +15,22 @@ export const SortSelect = () => {
 
 	const handleChange = async (e: ChangeEvent<HTMLSelectElement>) => {
 		e.preventDefault();
-		startTransition(() => {
-			const sortBy: string = e.target.value;
-			setSorted(sortBy);
-			router.push(`/tags?${changeUrlParams("sort", sortBy)}`);
-		});
+		const sortBy: string = e.target.value;
+		setSorted(sortBy);
+		router.push(`/tags?${changeUrlParams("sort", sortBy)}`);
 	};
-	console.log(isPending);
+
 	return (
-		<div className="relative w-36 px-3 py-2 ">
+		<div className="relative w-36 pt-2 ">
 			<label
 				htmlFor="sorted"
-				className="absolute  top-0 m-auto mx-3 block bg-white px-1 text-xs font-medium"
+				className="absolute top-0 m-auto mx-3 block bg-white px-1 text-xs font-medium"
 			>
 				Sort by
 			</label>
 
 			<select
-				className="w-full rounded-md border bg-transparent py-2 pl-3 pr-3 text-zinc-600 shadow-sm outline-none focus:border-sky-600"
+				className="h-11 w-full rounded-md border bg-transparent pl-3 pr-2 text-zinc-600 shadow-sm outline-none focus:border-sky-600"
 				id="sorted"
 				value={sorted}
 				onChange={handleChange}

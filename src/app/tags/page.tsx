@@ -2,16 +2,18 @@ import { Suspense } from "react";
 import { type Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import Loading from "./loading";
 import { TableTags } from "@/ui/organisms/TagTable";
 import { Pagination } from "@/ui/molecules/Pagination";
 import { Title } from "@/ui/atoms/Title";
 import { SectionContainer } from "@/ui/atoms/SectionContainer";
-import Loading from "./loading";
 
 import { getTags } from "@/api/tagAPI";
 import { type TagsUrlParams } from "@/utils/types";
 import { createQueryParams } from "@/utils/helpers";
-import { TagParamsForm } from "@/ui/organisms/TagParamsForm";
+import { PageSizeInput } from "@/ui/atoms/PageSizeInput";
+import { SortBySelect } from "@/ui/molecules/SortBySelect";
+import { SortOrderRadio } from "@/ui/molecules/SortOrderRadio";
 
 export const metadata: Metadata = {
 	title: "Stack Overflow API - tag browser",
@@ -38,9 +40,13 @@ export default async function TagsPage({ searchParams }: TagsPageParams) {
 		<SectionContainer>
 			<Title>Stack Overflow API - Tag browser </Title>
 			<div>
-				<div className="flex items-end justify-between">
+				<div className="items-end justify-between md:flex">
 					<p>Searchfield</p>
-					<TagParamsForm />
+					<form className="flex items-end justify-center">
+						<PageSizeInput />
+						<SortBySelect />
+						<SortOrderRadio />
+					</form>
 				</div>
 				<Suspense fallback={<Loading />}>
 					<TableTags tags={data.items} />

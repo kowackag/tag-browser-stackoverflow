@@ -9,7 +9,7 @@ export const OrderRadioField = ({
 	orderData,
 }: {
 	orderData: {
-		name: string;
+		href: string;
 		param: string;
 	};
 }) => {
@@ -34,22 +34,23 @@ export const OrderRadioField = ({
 	};
 
 	return (
-		<label
-			htmlFor={orderData.param}
-			className=" inline-flex items-center "
-		>
+		<label htmlFor={orderData.param} className="h-11 inline-flex items-center outline-none">
 			<input
 				id={orderData.param}
 				type="radio"
 				checked={optimisticOrder === orderData.param}
-				name="pagination"
-				className="peer pt-2 sr sr-only"
+				className="peer sr-only pt-2"
 				onChange={handleChange}
 				value={orderData.param}
+				aria-labelledby={orderData.param}
 			/>
-			<p className="inline-flex items-center px-4 pt-1 text-sm peer-checked:font-bold peer-checked:text-sky-700">
-				{orderData.name}
-			</p>
+			<svg
+				className="left-0 top-0 peer-checked:text-sky-600 "
+				width="24px"
+				height="24px"
+			>
+				<use href={orderData.href}></use>
+			</svg>
 		</label>
 	);
 };

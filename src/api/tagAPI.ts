@@ -18,6 +18,7 @@ export const getTags = async (params: TagsUrlParams) => {
 	}
 	// const tags = {
 	// 	items: [],
+	// 	quota_max: 1000,
 	// };
 	// return tags;
 };
