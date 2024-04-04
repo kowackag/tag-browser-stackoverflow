@@ -1,9 +1,10 @@
 "use client";
 
 import { type ChangeEvent, startTransition, useOptimistic } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import { useSetParams } from "@/utils/hooks/useSetParams";
+import { Route } from "next";
 
 export const OrderRadioField = ({
 	orderData,
@@ -15,6 +16,7 @@ export const OrderRadioField = ({
 }) => {
 	const router = useRouter();
 	const searchParams = useSearchParams();
+	const pathname = usePathname();
 
 	const changeUrlParams = useSetParams(searchParams);
 
@@ -30,7 +32,7 @@ export const OrderRadioField = ({
 				setOptimisticOrder(e.target.value);
 			});
 
-		router.push(`/tags?${changeUrlParams("order", e.target.value)}`);
+		router.push(`${pathname}?${changeUrlParams("order", e.target.value)}` as Route);
 	};
 
 	return (

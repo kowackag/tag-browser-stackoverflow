@@ -1,14 +1,16 @@
 "use client";
 
 import { type ChangeEvent, useState, useEffect } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import { useSetParams } from "@/utils/hooks/useSetParams";
 import { useDebounce } from "@/utils/hooks/useDebounce";
+import { Route } from "next";
 
 export const PageSizeInput = () => {
 	const router = useRouter();
 	const searchParams = useSearchParams();
+	const pathname = usePathname();
 	const pageSizeParam = Number(searchParams.get("pagesize")) || 10;
 
 	const [pageSize, setPageSize] = useState(pageSizeParam);
@@ -19,7 +21,7 @@ export const PageSizeInput = () => {
 	useEffect(() => {
 		if (!debouncedPhrase) return;
 		router.push(
-			`/tags?${changeUrlParams("pagesize", debouncedPhrase.toString())}`,
+			`${pathname}?${changeUrlParams("pagesize", debouncedPhrase.toString())}` as Route,
 		);
 	}, [debouncedPhrase, router, changeUrlParams]);
 

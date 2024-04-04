@@ -1,13 +1,15 @@
 "use client";
 
 import { type ChangeEvent, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import { useSetParams } from "@/utils/hooks/useSetParams";
+import { Route } from "next";
 
 export const SortBySelect = () => {
 	const router = useRouter();
 	const searchParams = useSearchParams();
+	const pathname = usePathname();
 
 	const [sorted, setSorted] = useState(searchParams.get("sorted") ?? "popular");
 
@@ -17,7 +19,7 @@ export const SortBySelect = () => {
 		e.preventDefault();
 		const sortBy: string = e.target.value;
 		setSorted(sortBy);
-		router.push(`/tags?${changeUrlParams("sort", sortBy)}`);
+		router.push(`${pathname}?${changeUrlParams("sort", sortBy)} ` as Route);
 	};
 
 	return (
