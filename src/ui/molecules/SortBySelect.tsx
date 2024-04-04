@@ -11,7 +11,7 @@ export const SortBySelect = () => {
 	const searchParams = useSearchParams();
 	const pathname = usePathname();
 
-	const [sorted, setSorted] = useState(searchParams.get("sorted") ?? "popular");
+	const [sorted, setSorted] = useState(searchParams.get("sorted") || "popular");
 
 	const changeUrlParams = useSetParams(searchParams);
 

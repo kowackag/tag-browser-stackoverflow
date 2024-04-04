@@ -22,7 +22,12 @@ export const ActiveLink = <T extends string>({
 	...props
 }: ActiveLinkProps<T>) => {
 	const pathname = usePathname();
-	const isActive = exact ? pathname === href : pathname.startsWith(href);
+	const copyHref = href.split("?")[0] || href;
+	const isActive = exact
+		? pathname === href
+		: !href.split("?")[0]
+			? pathname.startsWith(href)
+			: pathname.startsWith(copyHref);
 
 	return (
 		<Link
