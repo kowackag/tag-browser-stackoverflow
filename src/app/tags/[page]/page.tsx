@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import { type Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import Loading from "./loading";
+import Loading from "../loading";
 import { TableTags } from "@/ui/organisms/TagTable";
 import { Pagination } from "@/ui/molecules/Pagination";
 import { Title } from "@/ui/atoms/Title";
@@ -22,11 +22,15 @@ export const metadata: Metadata = {
 };
 
 type TagsPageParams = {
+	readonly params: { page: string };
 	readonly searchParams: TagsUrlParams;
 };
 
-export default async function TagsPage({ searchParams }: TagsPageParams) {
-	const queryParams = createQueryParams(searchParams);
+export default async function TagsPage({
+	params,
+	searchParams,
+}: TagsPageParams) {
+	const queryParams = createQueryParams(searchParams, params.page);
 	const data = await getTags(queryParams);
 
 	if (!data) {
@@ -43,7 +47,7 @@ export default async function TagsPage({ searchParams }: TagsPageParams) {
 				<div className="items-end justify-between md:flex">
 					<p>Searchfield</p>
 					<form className="flex items-end justify-center">
-						<PageSizeInput />
+						{/* <PageSizeInput /> */}
 						<SortBySelect />
 						<SortOrderRadio />
 					</form>
@@ -51,7 +55,11 @@ export default async function TagsPage({ searchParams }: TagsPageParams) {
 				<Suspense fallback={<Loading />}>
 					<TableTags tags={data.items} />
 				</Suspense>
-				<Pagination pageQuantity={lastPageNumber} />
+				<Pagination
+					pageSize={queryParams.pagesize || 30}
+					totalTags={data.quota_max}
+					currentPage={Number(params.page)}
+				/>
 			</div>
 		</SectionContainer>
 	);

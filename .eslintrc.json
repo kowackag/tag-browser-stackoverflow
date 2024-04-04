@@ -4,7 +4,7 @@
 	"parserOptions": {
 		"project": "tsconfig.json"
 	},
-	// "workingDirectories": ["<rootDir>/src"],
+	"workingDirectories": ["<rootDir>/src"],
 	"extends": [
 		"plugin:@typescript-eslint/recommended",
 		"plugin:@typescript-eslint/recommended-requiring-type-checking",
