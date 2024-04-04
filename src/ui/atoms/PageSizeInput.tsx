@@ -3,13 +3,13 @@
 import { type ChangeEvent, useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
-import { useSetParams } from "@/utils/useSetParams";
-import { useDebounce } from "@/utils/useDebounce";
+import { useSetParams } from "@/utils/hooks/useSetParams";
+import { useDebounce } from "@/utils/hooks/useDebounce";
 
 export const PageSizeInput = () => {
 	const router = useRouter();
 	const searchParams = useSearchParams();
-	const pageSizeParam = Number(searchParams.get("pagesize")) || 30;
+	const pageSizeParam = Number(searchParams.get("pagesize")) || 10;
 
 	const [pageSize, setPageSize] = useState(pageSizeParam);
 

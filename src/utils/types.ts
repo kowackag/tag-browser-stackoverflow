@@ -1,6 +1,6 @@
 export type TagsUrlParams = {
 	order?: string;
 	sort?: string;
-	string?: number;
+	page?: number;
 	pagesize?: number;
 };

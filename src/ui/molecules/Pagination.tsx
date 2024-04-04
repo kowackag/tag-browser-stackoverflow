@@ -1,6 +1,6 @@
-import { usePagination } from "@/utils/usePagination";
+import { type Route } from "next";
 import { ActiveLink } from "../atoms/ActiveLink";
-import { Route } from "next";
+import { usePagination } from "@/utils/hooks/usePagination";
 
 export const Pagination = ({
 	currentPage,
@@ -11,7 +11,6 @@ export const Pagination = ({
 	totalTags: number;
 	pageSize: number;
 }) => {
-	console.log(currentPage);
 	const paginationRange = usePagination({
 		currentPage: currentPage,
 		totalCount: totalTags,

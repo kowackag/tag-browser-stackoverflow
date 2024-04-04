@@ -34,7 +34,7 @@
 		"**/*.tsx",
 		".next/types/**/*.ts",
 		"tailwind.config.ts",
-		"../stackoverflow-tags/src/utils/useDebounce.ts",
+		"src/utils/hooks/useDebounce.ts",
 		"../TESTY E2E/page.tsx"
 	],
 	"exclude": ["node_modules"]

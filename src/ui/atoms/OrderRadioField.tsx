@@ -3,7 +3,7 @@
 import { type ChangeEvent, startTransition, useOptimistic } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
-import { useSetParams } from "@/utils/useSetParams";
+import { useSetParams } from "@/utils/hooks/useSetParams";
 
 export const OrderRadioField = ({
 	orderData,
@@ -34,7 +34,10 @@ export const OrderRadioField = ({
 	};
 
 	return (
-		<label htmlFor={orderData.param} className="h-11 inline-flex items-center outline-none">
+		<label
+			htmlFor={orderData.param}
+			className="inline-flex h-11 items-center outline-none"
+		>
 			<input
 				id={orderData.param}
 				type="radio"

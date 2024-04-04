@@ -3,7 +3,7 @@
 import { type ChangeEvent, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
-import { useSetParams } from "@/utils/useSetParams";
+import { useSetParams } from "@/utils/hooks/useSetParams";
 
 export const SortBySelect = () => {
 	const router = useRouter();
