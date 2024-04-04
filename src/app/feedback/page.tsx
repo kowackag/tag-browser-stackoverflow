@@ -1,11 +1,18 @@
-import { SectionContainer } from "@/ui/atoms/SectionContainer";
 import { SendFeedbackForm } from "@/ui/molecules/SendFeedbackForm/SendFeedbackForm";
+import { SectionContainer } from "@/ui/atoms/SectionContainer";
+import { Title } from "@/ui/atoms/Title";
 
 export default async function FeedbackPage() {
 	return (
 		<SectionContainer>
-            <p>Thank you for visit my page. I would be very gratefull if you could give me any feedback to </p>
-			<SendFeedbackForm />
+			<div>
+				<Title>Thank you for visit my page.</Title>
+				<p className="py-4">
+					I would be very gratefull if you could give me any feedback that will
+					help me improve my skills and qualifications
+				</p>
+				<SendFeedbackForm />
+			</div>
 		</SectionContainer>
 	);
 }

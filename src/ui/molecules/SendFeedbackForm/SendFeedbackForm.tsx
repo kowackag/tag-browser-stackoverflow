@@ -2,9 +2,10 @@
 
 import { useFormState } from "react-dom";
 
-import { sendFeedback } from "./actions";
 import { StarsRadioField } from "@/ui/atoms/StarsRadioField";
 import { SendFeedbackButton } from "@/ui/atoms/SendFeedbackButton";
+
+import { sendFeedback } from "./actions";
 
 export const SendFeedbackForm = () => {
 	const [_state, formAction] = useFormState(
@@ -17,7 +18,7 @@ export const SendFeedbackForm = () => {
 	return (
 		<form data-testid="add-review-form" action={formAction}>
 			<div className="text-sm">
-				<p className="inline-block pt-2">Rate my solution</p>
+				<p className="inline-block pt-2">Rating</p>
 				<StarsRadioField />
 			</div>
 			<div className="text-sm">

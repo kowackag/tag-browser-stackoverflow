@@ -1,10 +1,10 @@
 "use client";
 
+import { Route } from "next";
 import { type ChangeEvent, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import { useSetParams } from "@/utils/hooks/useSetParams";
-import { Route } from "next";
 
 export const SortBySelect = () => {
 	const router = useRouter();
