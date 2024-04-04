@@ -42,7 +42,7 @@ export const taskList = [
 	},
 	{
 		id: 8,
-		name: "Publish the sollution on the GitHub repositories ",
+		name: "Publish the sollution on the GitHub repositories",
 		solution:
 			"Repossitory has been created and published on GitHub. Moreover it has beed deployed on Vercel",
 		ghPath: "https://github.com/kowackag/tag-browser-stackoverflow",
