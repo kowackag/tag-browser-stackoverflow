@@ -1,7 +1,7 @@
+import { TaskTable } from "@/ui/molecules/TaskTable";
 import { SectionContainer } from "@/ui/atoms/SectionContainer";
 import { StackTechBlock } from "@/ui/atoms/StackTechBlock";
 import { Title } from "@/ui/atoms/Title";
-import { TaskTable } from "@/ui/molecules/TaskTable";
 
 export default async function Home() {
 	return (

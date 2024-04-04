@@ -1,6 +1,6 @@
+import { SendFeedbackForm } from "@/ui/molecules/SendFeedbackForm/SendFeedbackForm";
 import { SectionContainer } from "@/ui/atoms/SectionContainer";
 import { Title } from "@/ui/atoms/Title";
-import { SendFeedbackForm } from "@/ui/molecules/SendFeedbackForm/SendFeedbackForm";
 
 export default async function FeedbackPage() {
 	return (

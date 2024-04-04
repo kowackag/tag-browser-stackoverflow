@@ -1,11 +1,11 @@
 "use client";
 
+import { Route } from "next";
 import { type ChangeEvent, useState, useEffect } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import { useSetParams } from "@/utils/hooks/useSetParams";
 import { useDebounce } from "@/utils/hooks/useDebounce";
-import { Route } from "next";
 
 export const PageSizeInput = () => {
 	const router = useRouter();

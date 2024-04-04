@@ -30,7 +30,6 @@ export const ActiveLink = <T extends string>({
 			className={clsx([className], {
 				[activeClassName]: isActive,
 			})}
-			// aria-current={isActive ? "page" : undefined}
 			{...props}
 		>
 			{children}

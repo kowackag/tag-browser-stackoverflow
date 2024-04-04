@@ -1,10 +1,10 @@
 "use client";
 
+import { Route } from "next";
 import { type ChangeEvent, startTransition, useOptimistic } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import { useSetParams } from "@/utils/hooks/useSetParams";
-import { Route } from "next";
 
 export const OrderRadioField = ({
 	orderData,
@@ -32,7 +32,9 @@ export const OrderRadioField = ({
 				setOptimisticOrder(e.target.value);
 			});
 
-		router.push(`${pathname}?${changeUrlParams("order", e.target.value)}` as Route);
+		router.push(
+			`${pathname}?${changeUrlParams("order", e.target.value)}` as Route,
+		);
 	};
 
 	return (

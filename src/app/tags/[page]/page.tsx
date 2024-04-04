@@ -9,7 +9,7 @@ import { SortOrderRadio } from "@/ui/molecules/SortOrderRadio";
 import { PageSizeInput } from "@/ui/atoms/PageSizeInput";
 import { Title } from "@/ui/atoms/Title";
 import { SectionContainer } from "@/ui/atoms/SectionContainer";
-import Loading from "../loading";
+import Loading from "../../loading";
 
 import { getTags } from "@/api/tagAPI";
 import { type TagsUrlParams } from "@/utils/types";

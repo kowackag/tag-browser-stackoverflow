@@ -1,4 +1,4 @@
-import { OrderRadioField } from "../atoms/OrderRadioField";
+import { OrderRadioField } from "@/ui/atoms/OrderRadioField";
 
 export const SortOrderRadio = () => {
 	const orderList = [

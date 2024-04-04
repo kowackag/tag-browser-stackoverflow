@@ -1,5 +1,7 @@
 import { type Route } from "next";
-import { ActiveLink } from "../atoms/ActiveLink";
+
+import { ActiveLink } from "@/ui/atoms/ActiveLink";
+
 import { usePagination } from "@/utils/hooks/usePagination";
 
 export const Pagination = ({
