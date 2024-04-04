@@ -4,6 +4,9 @@ import { notFound } from "next/navigation";
 
 import { TableTags } from "@/ui/organisms/TagTable";
 import { Pagination } from "@/ui/molecules/Pagination";
+import { SortBySelect } from "@/ui/molecules/SortBySelect";
+import { SortOrderRadio } from "@/ui/molecules/SortOrderRadio";
+import { PageSizeInput } from "@/ui/atoms/PageSizeInput";
 import { Title } from "@/ui/atoms/Title";
 import { SectionContainer } from "@/ui/atoms/SectionContainer";
 import Loading from "../loading";
@@ -11,9 +14,6 @@ import Loading from "../loading";
 import { getTags } from "@/api/tagAPI";
 import { type TagsUrlParams } from "@/utils/types";
 import { createQueryParams } from "@/utils/helpers";
-import { PageSizeInput } from "@/ui/atoms/PageSizeInput";
-import { SortBySelect } from "@/ui/molecules/SortBySelect";
-import { SortOrderRadio } from "@/ui/molecules/SortOrderRadio";
 
 export const metadata: Metadata = {
 	title: "Stack Overflow API - tag browser",

@@ -5,3 +5,7 @@ export const Title = ({ children }: { children: React.ReactNode }) => {
 		</h1>
 	);
 };
+
+export const SubTitle = ({ children }: { children: React.ReactNode }) => {
+	return <h2 className="my-4 text-center text-2xl sm:text-left">{children}</h2>;
+};

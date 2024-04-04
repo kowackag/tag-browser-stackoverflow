@@ -17,7 +17,7 @@ export const SendFeedbackForm = () => {
 	return (
 		<form data-testid="add-review-form" action={formAction}>
 			<div className="text-sm">
-				<p className="inline-block pt-2">Rate my solution</p>
+				<p className="inline-block pt-2">Rating</p>
 				<StarsRadioField />
 			</div>
 			<div className="text-sm">
