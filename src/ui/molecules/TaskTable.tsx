@@ -15,7 +15,7 @@ export const TaskTable = () => {
 						key={task.id}
 						className="grid grid-cols-3 border-b border-l border-r md:border-zinc-200"
 					>
-						<td className="p-4 font-semibold md:font-normal">{task.name}</td>
+						<td className="p-4 font-bold md:font-normal">{task.name}</td>
 						<td className="order-2 col-span-2 p-4" data-testid="product-price">
 							{task.solution}
 							{task.id === 8 ? (

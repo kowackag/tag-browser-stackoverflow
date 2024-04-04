@@ -20,7 +20,7 @@ export const taskList = [
 		id: 4,
 		name: "API - handling data loading and errors  states",
 		solution:
-			"I have used async/await fetching data so I have used The try...catch statement. Beetween reloding page I put Loader compononet. I have used erros.js (Next.js)",
+			"I have used build in Next.js solutions such as erros.tsx, loadind.tsx. The routes and nested children are wrapped in a React Eror Boundry",
 	},
 	{
 		id: 5,
