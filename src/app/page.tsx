@@ -1,14 +1,15 @@
-import { getTags } from "@/api/tagAPI";
+import { SectionContainer } from "@/ui/atoms/SectionContainer";
+import { Title } from "@/ui/atoms/Title";
 
 export default async function Home() {
-  const data = await getTags({});
-  console.log(data);
-
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        Main
-      </div>
-    </main>
-  );
+	return (
+		<SectionContainer>
+			<Title>Introduction</Title>
+			<p>
+				First of all I would like to thank you for your response and the
+				opportunity to participate in the recruitment process for the Junior
+				Frontend Developer possition.
+			</p>
+		</SectionContainer>
+	);
 }
